@@ -28,12 +28,12 @@ public class SpendLogController extends HttpServlet {
 		String begin = req.getParameter("begin");
 		String end = req.getParameter("end");
 		String sort = req.getParameter("sort");
-		String[] categoryIds = req.getParameterValues("categoryId");
+		String[] categoryIds = req.getParameterValues("categoryId"); //로그 제이에스피에서 넘어오는 데이터.
 		
 		User user = (User) req.getSession().getAttribute("logonUser");
 		String userId = user.getId();
 		try {
-			sort =  (sort==null || sort.equals("")) ? "spendAt" : sort;
+			sort =  (sort==null || sort.equals("")) ? "spendAt" : sort;//셀렉트 필터 값 소트로. 널인 경우 날짜를기준값으로.
 			
 			LocalDate now = LocalDate.now();
 			
@@ -44,12 +44,12 @@ public class SpendLogController extends HttpServlet {
 			
 			categoryIds = categoryIds == null ? new String[0] : categoryIds;
 			
-			int[] iCategoryIds = new int[categoryIds.length];
+			int[] iCategoryIds = new int[categoryIds.length];//배열은 항상 빈배열을만들어야한다. 카테고리 아이디즈만큼.
 			for(int i=0; i<categoryIds.length; i++) {
 				iCategoryIds[i] = Integer.parseInt(categoryIds[i]);
-			}
+			}//스트링으로 넘어오는 데이터를 인트파싱해서 새배열에다 넣어준다.
 			
-			List<SpendLog> list = spendLogDao.findByUserIdAndConditions(userId, sort, beginDate, endDate, iCategoryIds);
+			List<SpendLog> list = spendLogDao.findByUserIdAndConditions(userId, sort, beginDate, endDate, iCategoryIds);// 이걸 리스트로 만드는데,
 			
 			req.setAttribute("logs", list);
 			int total = 0;

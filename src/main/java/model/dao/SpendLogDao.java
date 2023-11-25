@@ -86,7 +86,7 @@ public class SpendLogDao {
 			
 			switch (sort) {
 			case "amt" -> sql += " ORDER BY AMT DESC, SPEND_AT DESC";
-			case "spendAt" -> sql += " ORDER BY SPEND_AT DESC, NO DESC";
+			case "spendAt" -> sql += " ORDER BY SPEND_AT DESC, NO DESC"; //진짜 복잡한 쿼리문 조립 
 			}
 			// System.out.println(sql);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
