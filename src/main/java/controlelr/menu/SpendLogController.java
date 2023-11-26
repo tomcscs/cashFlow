@@ -51,12 +51,14 @@ public class SpendLogController extends HttpServlet {
 			
 			List<SpendLog> list = spendLogDao.findByUserIdAndConditions(userId, sort, beginDate, endDate, iCategoryIds);// 이걸 리스트로 만드는데,
 			
-			req.setAttribute("logs", list);
+			req.setAttribute("logs", list);//종착
+			
 			int total = 0;
 			for (SpendLog one : list) {
 				total += one.getAmt();
 			}
-			req.setAttribute("total", total);
+			req.setAttribute("total", total);//총합
+			
 			
 			req.setAttribute("cates", categoryDao.findAll());
 			

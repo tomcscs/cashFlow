@@ -65,7 +65,7 @@
 						</div>
 						<div>
 							<input type="date" name="begin" value="${param.begin }"/> ~ <input
-								type="date" name="end"  value="${param.end }"/>
+							type="date" name="end"  value="${param.end }"/>
 						</div>
 					</div>
 					<div>
