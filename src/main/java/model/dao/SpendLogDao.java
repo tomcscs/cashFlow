@@ -27,7 +27,7 @@ public class SpendLogDao {
 			pstmt.setString(4, spendLog.getUseDesc());
 			pstmt.setInt(5, spendLog.getCategoryId());
 
-			int n = pstmt.executeUpdate(); // 요청 전송하고 DB에서 응답을 받아옴.
+			int n = pstmt.executeUpdate(); // 요청 전송하고 DB에서 응답을 받아옴
 			if (n == 1) {
 				result = true;
 			}
