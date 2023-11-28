@@ -27,8 +27,8 @@ public class SpendLogController extends HttpServlet {
 
 		String begin = req.getParameter("begin");
 		String end = req.getParameter("end");
-		String sort = req.getParameter("sort");
-		String[] categoryIds = req.getParameterValues("categoryId"); //로그 제이에스피에서 넘어오는 데이터.
+		String sort = req.getParameter("sort");//옶
+		String[] categoryIds = req.getParameterValues("categoryId"); //로그 제이에스피에서 넘어오는 데이터.(로그.JSP)
 		
 		User user = (User) req.getSession().getAttribute("logonUser");
 		String userId = user.getId();
@@ -49,7 +49,7 @@ public class SpendLogController extends HttpServlet {
 				iCategoryIds[i] = Integer.parseInt(categoryIds[i]);
 			}//스트링으로 넘어오는 데이터를 인트파싱해서 새배열에다 넣어준다.
 			
-			List<SpendLog> list = spendLogDao.findByUserIdAndConditions(userId, sort, beginDate, endDate, iCategoryIds);// 이걸 리스트로 만드는데,
+			List<SpendLog> list = spendLogDao.findByUserIdAndConditions(userId, sort, beginDate, endDate, iCategoryIds);// 이걸 리스트로 만드는데,(여기서 이걸 사용했구나.)
 			
 			req.setAttribute("logs", list);//종착
 			

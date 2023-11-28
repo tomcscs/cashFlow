@@ -31,7 +31,7 @@ public class SpendLogWriteController extends HttpServlet {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		req.getRequestDispatcher("/WEB-INF/view/private/spend/write.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/view/private/spend/write.jsp").forward(req, resp);//여기는 바로 제이에스피로 가는
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class SpendLogWriteController extends HttpServlet {
 		Date spendAt = Date.valueOf(req.getParameter("spendAt"));
 		int categoryId = Integer.parseInt(req.getParameter("categoryId"));
 		int amt = Integer.parseInt(req.getParameter("amt"));
-		String useDesc = req.getParameter("useDesc");
+		String useDesc = req.getParameter("useDesc");//라이트 제이에스피에서 가지고 온 파라미터들(라이트들은 한가족)
 		
 		// userId는 어떻게? 세션 활용
 		User user = (User)req.getSession().getAttribute("logonUser");
@@ -53,7 +53,7 @@ public class SpendLogWriteController extends HttpServlet {
 			boolean result = spendLogDao.save(log);
 			if(result)  {
 				// 지출 목록보는 곳으로
-				resp.sendRedirect(req.getServletContext().getContextPath()+"/private/spend/log");
+				resp.sendRedirect(req.getServletContext().getContextPath()+"/private/spend/log");// 여기는 또 컨트롤러로 가네. 지금 여기는 컨트롤러에서 컨트롤러로 가는 길.
 			}else {
 				// 그게 아니면 다시 작성할 수 있게 뷰를 재활용
 				// 내용 찍어줄수 있게

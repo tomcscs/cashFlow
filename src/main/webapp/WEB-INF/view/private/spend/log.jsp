@@ -97,21 +97,21 @@
 							<th>금액</th>
 							<th>분류</th>
 						</tr>
-						<c:forEach items="${logs }" var="one">
+						<c:forEach items="${logs }" var="one"><!-- 여기가 나열해주는  -->
 							<tr>
 								<td><input type="checkbox" name="no" value="${one.no }" /></td>
 								<td>${one.spendAt }</td>
 								<td>${one.useDesc }</td>
 								<td><fmt:formatNumber value="${one.amt }" pattern="#,###" />
 								</td>
-								<td>${one.category.name }</td>
+								<td>${one.category.name }</td><!-- 카테고리 네임은 여기로 족하다. -->
 							</tr>
 						</c:forEach>
 						<tr
 							style="background-color: #444; color: #eee; font-weight: bold;">
 							<td colspan="3">총 합</td>
-							<td colspan="2"><fmt:formatNumber value="${total }"
-									pattern="#,###" /></td>
+							<td colspan="2"><fmt:formatNumber value="${total }" 
+									pattern="#,###" /></td><!--여기가총합부분 -->
 						</tr>
 					</table>
 					<div class="align-right my-2"
